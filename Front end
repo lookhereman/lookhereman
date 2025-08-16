@@ -1,0 +1,26 @@
+// Sample React component for an artwork card
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const ArtworkCard = ({ painting }) => {
+  return (
+    <div className="artwork-card">
+      <Link to={`/artwork/${painting.slug}`}>
+        <img 
+          src={painting.thumbnail} 
+          alt={painting.title} 
+          className="artwork-image"
+          loading="lazy"
+        />
+        <div className="artwork-info">
+          <h3>{painting.title}</h3>
+          <p>{painting.medium}, {painting.dimensions}</p>
+          <p className="price">${painting.price.toLocaleString()}</p>
+          {painting.sold && <span className="sold-badge">Sold</span>}
+        </div>
+      </Link>
+    </div>
+  );
+};
+
+export default ArtworkCard;
